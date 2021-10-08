@@ -60,6 +60,10 @@
 <script>
 export default {
   data () {
+    let userName = '';
+    if (process.client) {
+      userName = localStorage.getItem('username') || '';
+    }
     return {
       clipped: false,
       drawer: false,
@@ -79,7 +83,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Dachfenster'
+      title: 'Dachfenster',
+      userName: userName
     }
   }
 };
