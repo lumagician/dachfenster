@@ -5,6 +5,7 @@ import json
 import azure.functions as func
 from azure.data.tables import TableClient
 from azure.core.exceptions import HttpResponseError
+from furl import furl
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -35,6 +36,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             logging.info(json.dumps(driver))
             logging.info(json.dumps(passenger))
             logging.info(bing_maps_key)
+
+            request_url = furl('http://dev.virtualearth.net/REST/v1/Locations')
+            request_url.args['param1'] = u'vanité'
+
+            logging.info(request_url.url)
             
             return func.HttpResponse(
                 json.dumps(result),
