@@ -3,7 +3,8 @@ import logging
 import os
 import azure.functions as func
 import json
-from azure.data.tables import TableServiceClient
+from azure.data.tables import TableClient
+from azure.core.exceptions import HttpResponseError
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -17,21 +18,30 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     account_name, access_key, endpoint_suffix)
     table_name = "Route"
 
-    with TableServiceClient.from_connection_string(conn_str=connection_string) as table_service:
-        list_tables = table_service.list_tables()
+    with TableClient.from_connection_string(connection_string, table_name) as table_client:
+        try:
+            parameters = {u"hascar": True }
+            driver_filter = u"HasCar eq @hascar"
+            queried_entities = table_client.query_entities(
+                query_filter=driver_filter, select=[
+                    "RowKey",
+                    "StartAddressZipCode",
+                "StartAddressCity",
+                "DestinationAddressZipCode",
+                "DestinationAddressCity"],
+                parameters = parameters
+            )
 
-        all_tables = ''
-        for table in list_tables:
-            all_tables += table.name
-
-
-        return func.HttpResponse(json.dumps([
-            {
-                'title': 'Func Result 1 ' + all_tables
-            },
-            {
-                'title': 'Func Result 2' + connection_string
-            }
-        ]), mimetype = 'application/json')
+            items = []
+            for entity_chosen in queried_entities:
+                item = {
+                    'title': entity_chosen['RowKey']
+                }
+                items.append(item)
+            
+            return func.HttpResponse(json.dumps(items), mimetype = 'application/json')
+        except HttpResponseError as e:
+            logging.error(e)
+            return func.HttpResponse(json.dumps([]), mimetype = 'application/json')
 
 
