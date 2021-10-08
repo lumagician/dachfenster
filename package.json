@@ -1,24 +1,23 @@
 {
   "name": "dachfenster",
   "version": "1.0.0",
-  "description": "Allows you to find your passenger for a rideshare.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lumagician/dachfenster.git"
+  "dependencies": {
+    "@nuxt/content": "^1.14.0",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7",
+    "vuetify": "^2.5.5"
   },
-  "keywords": [
-    "rideshare",
-    "carshare",
-    "social"
-  ],
-  "author": "La Girafe",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/lumagician/dachfenster/issues"
-  },
-  "homepage": "https://github.com/lumagician/dachfenster#readme"
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.1",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  }
 }
