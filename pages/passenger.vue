@@ -7,6 +7,8 @@
         </v-card-title>
         <v-card-text>
 	<p>Von nach</p>
+    <button v-on:click="searchRoutes">Suchen</button>
+    <p>{{ results }}</p>
         </v-card-text>
       </v-card>
     </v-col>
@@ -19,8 +21,14 @@ export default {
     },
     data() {
         return {
-            fahrtSuchen: 'Fahrt suchen'
+            fahrtSuchen: 'Fahrt suchen',
+            results: 'None'
         };
+    },
+    methods: {
+        searchRoutes: function () {
+            this.results = '3 results found';
+        }
     }
 };
 </script>
