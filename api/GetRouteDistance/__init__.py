@@ -3,7 +3,6 @@ import logging
 import azure.functions as func
 
 import json
-import requests
 
 x = {
     "AdressOne" : "Burgdorfstrsse 30, 3510 Konolfingen",
