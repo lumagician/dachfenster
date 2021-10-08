@@ -36,20 +36,33 @@ export default {
     setup() {
         
     },
-    async getDataAsync() {
+    data() {
+        return {
+            title: 'Passagier - Mitfahrgelegenheiten',
+            results: [],
+            homeAddress: {
+                street: 'Guisanstr. 2',
+                zipCode: '3014',
+                city: 'Bern'
+            },
+            workAddress: {
+                street: 'Maritzstrasse 20',
+                zipCode: '3400',
+                city: 'Burgdorf'
+            }
+        };
+    },
+    async fetch() {
         let userName = 'Kowalski';
         if (process.client) {
             userName = localStorage.getItem('username');
         }
         const response = await fetch('/api/GetRoute?name=' + userName);
         const route = await response.json();
-        return {
-            title: 'Passagier - Mitfahrgelegenheiten',
-            results: [],
-            homeAddress: route.startAddress,
-            workAddress: route.destinationAddress
-        };
+        this.homeAddress = route.startAddress;
+        this.workAddress = route.destinationAddress;
     },
+    fetchOnServer: false,
     methods: {
         searchRoutes: async function () {
             if (process.client) {
