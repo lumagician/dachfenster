@@ -1,0 +1,24 @@
+{
+  "name": "dachfenster",
+  "version": "1.0.0",
+  "description": "Allows you to find your passenger for a rideshare.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumagician/dachfenster.git"
+  },
+  "keywords": [
+    "rideshare",
+    "carshare",
+    "social"
+  ],
+  "author": "La Girafe",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lumagician/dachfenster/issues"
+  },
+  "homepage": "https://github.com/lumagician/dachfenster#readme"
+}
