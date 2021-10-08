@@ -2,7 +2,7 @@
   <img
     class="VuetifyLogo"
     alt="La Girafe qui regarde"
-    src="/logo.jpg"
+    src="/logov2.png"
   >
 </template>
 
