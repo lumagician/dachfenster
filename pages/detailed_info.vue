@@ -83,7 +83,7 @@ export default {
       {
         hid: 'bingmaps',
         src:
-          'http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=' +
+          '//www.bing.com/api/maps/mapcontrol?callback=GetMap&key=' +
           process.env.BING_MAPS_KEY,
         defer: true,
       },
