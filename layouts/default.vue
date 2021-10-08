@@ -61,9 +61,6 @@
 export default {
   data () {
     let userName = '';
-    if (process.client) {
-      userName = localStorage.getItem('username') || '';
-    }
     return {
       clipped: false,
       drawer: false,
