@@ -26,16 +26,20 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 query_filter=driver_filter, select=[
                     "RowKey",
                     "StartAddressZipCode",
-                "StartAddressCity",
-                "DestinationAddressZipCode",
-                "DestinationAddressCity"],
+                    "StartAddressCity",
+                    "DestinationAddressZipCode",
+                    "DestinationAddressCity"],
                 parameters = parameters
             )
 
             items = []
             for entity_chosen in queried_entities:
                 item = {
-                    'title': entity_chosen['RowKey']
+                    'title': entity_chosen['RowKey'],
+                    'startAddressCity': entity_chosen['StartAddressCity'],
+                    'startAddressZipCode': entity_chosen['StartAddressZipCode'],
+                    'destinationAddressZipCode': entity_chosen['DestinationAddressZipCode'],
+                    'destinationAddressCity': entity_chosen['DestinationAddressCity']
                 }
                 items.append(item)
             
