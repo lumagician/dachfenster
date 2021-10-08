@@ -1,10 +1,11 @@
 {
   "name": "dachfenster",
   "version": "1.0.0",
-  "private": true,
+    "private": true,
+    "author": "La Girafe",
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build"
+    "build": "nuxt generate"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
