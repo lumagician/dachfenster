@@ -1,0 +1,25 @@
+::selection {
+  color: white
+}
+
+.fieldFromTo {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left !important;
+  font-weight: bold;
+  min-width: 40px;
+  pointer-events: none
+}
+
+.inputValue {
+  color: white;
+}
+
+
+.inputValueFromTo {
+  min-width: 200px;
+}
+
+
+input, select, textarea{
+  color: white;
+}
