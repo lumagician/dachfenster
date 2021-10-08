@@ -54,11 +54,13 @@ export default {
     },
     methods: {
         searchRoutes: async function () {
-            const userName = localStorage.getItem('username') || 'sebug';
-            const response = await fetch(`/api/ProposedDrivers?username=${userName}`);
-            const proposedDrivers = await response.json();
+            if (process.client) {
+                const userName = localStorage.getItem('username') || 'sebug';
+                const response = await fetch(`/api/ProposedDrivers?username=${userName}`);
+                const proposedDrivers = await response.json();
 
-            this.results = proposedDrivers;
+                this.results = proposedDrivers;
+            }
         }
     }
 };

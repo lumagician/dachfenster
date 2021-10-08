@@ -25,7 +25,9 @@ export default {
     },
     methods: {
         validateLoginCreds: async function () {
-          localStorage.setItem('username', this.username);
+          if (process.client) {
+            localStorage.setItem('username', this.username);
+          }
         }
     }
 };
