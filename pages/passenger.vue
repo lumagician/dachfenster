@@ -25,6 +25,7 @@
             <v-list-item-title v-text="item.title" />
             <v-list-item-subtitle v-text="item.description" />
             <v-list-item-subtitle v-text="item.goodies" />
+            <v-btn color="primary">Anfragen</v-btn>
           </v-list-item-content>
         </v-list-item>
       </v-list>
