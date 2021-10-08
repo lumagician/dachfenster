@@ -73,6 +73,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Passagier',
           to: '/passenger'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Fahrt sharen',
+          to: '/driveShare'
         }
       ],
       miniVariant: false,
