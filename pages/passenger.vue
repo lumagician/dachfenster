@@ -9,7 +9,7 @@
 	<p>Von {{ homeAddress.street }}, {{ homeAddress.zipCode }} {{ homeAddress.city }} <br />
     Nach {{ workAddress.street }}, {{ workAddress.zipCode }} {{ workAddress.city }}
     </p>
-    <button v-on:click="searchRoutes">Suchen</button>
+    <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
     <p>{{ results }}</p>
         </v-card-text>
       </v-card>
