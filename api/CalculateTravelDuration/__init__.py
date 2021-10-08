@@ -7,6 +7,7 @@ from azure.data.tables import TableClient
 from azure.core.exceptions import HttpResponseError
 from furl import furl
 import requests
+from azure.data.tables import UpdateMode
 
 BASE_URL = "http://dev.virtualearth.net/REST/V1/Routes/Driving"
 
@@ -72,6 +73,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             duration_with_passenger = get_duration_with_passenger(driver_start_address,
                 passenger_start_address, passenger_destination_address, driver_destination_address)
 
+
+            driver['DurationWithoutPassenger'] = duration_without_passenger
+
+            table_client.upsert_entity(mode=UpdateMode.REPLACE, entity = driver)
+
             logging.info(str(duration_without_passenger) + ' vs ' + str(duration_with_passenger))
 
             result = {
@@ -82,7 +88,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 'Duration': duration_with_passenger
             }
 
-
+            with TableClient.from_connection_string(connection_string, 'TravelDuration') as duration_client:
+                duration_client.upsert_entity(mode=UpdateMode.REPLACE, entity=result)
             
             return func.HttpResponse(
                 json.dumps(result),
