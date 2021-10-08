@@ -3,6 +3,7 @@ import logging
 import os
 import azure.functions as func
 import json
+from azure.data.tables import TableServiceClient
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -16,13 +17,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     account_name, access_key, endpoint_suffix)
     table_name = "Route"
 
-    return func.HttpResponse(json.dumps([
-        {
-            'title': 'Func Result 1 ' + access_key
-        },
-        {
-            'title': 'Func Result 2' + connection_string
-        }
-    ]), mimetype = 'application/json')
+    with TableServiceClient.from_connection_string(conn_str=connection_string) as table_service:
+        list_tables = table_service.list_tables()
+
+        all_tables = ''
+        for table in list_tables:
+            all_tables += table.name
+
+
+        return func.HttpResponse(json.dumps([
+            {
+                'title': 'Func Result 1 ' + all_tables
+            },
+            {
+                'title': 'Func Result 2' + connection_string
+            }
+        ]), mimetype = 'application/json')
 
 
