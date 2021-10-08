@@ -28,7 +28,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     "StartAddressZipCode",
                     "StartAddressCity",
                     "DestinationAddressZipCode",
-                    "DestinationAddressCity"],
+                    "DestinationAddressCity",
+                    "Description",
+                    "Goodies"],
                 parameters = parameters
             )
 
@@ -39,7 +41,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     'startAddressCity': entity_chosen['StartAddressCity'],
                     'startAddressZipCode': entity_chosen['StartAddressZipCode'],
                     'destinationAddressZipCode': entity_chosen['DestinationAddressZipCode'],
-                    'destinationAddressCity': entity_chosen['DestinationAddressCity']
+                    'destinationAddressCity': entity_chosen['DestinationAddressCity'],
+                    'description': entity_chosen['Description'],
+                    'goodies': entity_chosen['Goodies']
                 }
                 items.append(item)
             
