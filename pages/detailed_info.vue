@@ -4,8 +4,8 @@
     <v-row>
       <v-col class="text-center">
         <v-card elavation="5">
-          <div id='printoutPanel'></div>
-          <div id="myMap" style="width: 100vw; height: 100vh"></div>
+          <div id="myMap" style="width: 40vw; height: 50vh"></div>
+          <div id='printoutPanel' style="display: none;"></div>
         </v-card>
 
         <v-card elavation="5">
@@ -37,21 +37,37 @@ if (process.client) {
       routeMode: Microsoft.Maps.Directions.RouteMode.driving,
     })
     var waypoint1 = new Microsoft.Maps.Directions.Waypoint({
-      address: 'Redmond',
+      address: 'Driver Start',
       location: new Microsoft.Maps.Location(
-        47.67683029174805,
-        -122.1099624633789
+        46.879114,
+        7.620547
       ),
     })
     var waypoint2 = new Microsoft.Maps.Directions.Waypoint({
-      address: 'Seattle',
+      address: 'Passenger Start',
       location: new Microsoft.Maps.Location(
-        47.59977722167969,
-        -122.33458709716797
+        46.926458,
+        7.564239
+      ),
+    })
+    var waypoint3 = new Microsoft.Maps.Directions.Waypoint({
+      address: 'Passenger End',
+      location: new Microsoft.Maps.Location(
+        46.947371,
+        7.438867
+      ),
+    })
+    var waypoint4 = new Microsoft.Maps.Directions.Waypoint({
+      address: 'Driver End',
+      location: new Microsoft.Maps.Location(
+        46.925377,
+        7.416773
       ),
     })
     directionsManager.addWaypoint(waypoint1)
     directionsManager.addWaypoint(waypoint2)
+    directionsManager.addWaypoint(waypoint3)
+    directionsManager.addWaypoint(waypoint4)
     // Set the element in which the itinerary will be rendered
     directionsManager.setRenderOptions({
       itineraryContainer: document.getElementById('printoutPanel'),
