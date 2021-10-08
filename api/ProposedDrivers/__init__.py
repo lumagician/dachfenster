@@ -18,6 +18,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     account_name, access_key, endpoint_suffix)
     table_name = "Route"
 
+    name = req.params.get('name')
+
     with TableClient.from_connection_string(connection_string, table_name) as table_client:
         try:
             parameters = {u"hascar": True }
@@ -35,19 +37,27 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             )
 
             items = []
-            for entity_chosen in queried_entities:
-                item = {
-                    'title': entity_chosen['RowKey'],
-                    'startAddressCity': entity_chosen['StartAddressCity'],
-                    'startAddressZipCode': entity_chosen['StartAddressZipCode'],
-                    'destinationAddressZipCode': entity_chosen['DestinationAddressZipCode'],
-                    'destinationAddressCity': entity_chosen['DestinationAddressCity'],
-                    'description': entity_chosen['Description'],
-                    'goodies': entity_chosen['Goodies']
-                }
-                items.append(item)
-            
-            return func.HttpResponse(json.dumps(items), mimetype = 'application/json')
+            with TableClient.from_connection_string(connection_string, 'TravelDuration') as travel_duration_client:
+                for entity_chosen in queried_entities:
+                    item = {
+                        'title': entity_chosen['RowKey'],
+                        'startAddressCity': entity_chosen['StartAddressCity'],
+                        'startAddressZipCode': entity_chosen['StartAddressZipCode'],
+                        'destinationAddressZipCode': entity_chosen['DestinationAddressZipCode'],
+                        'destinationAddressCity': entity_chosen['DestinationAddressCity'],
+                        'description': entity_chosen['Description'],
+                        'goodies': entity_chosen['Goodies']
+                    }
+                    travel_duration = travel_duration_client.get_entity(entity_chosen['RowKey'] + '_' + name)
+                    
+                    duration_with_passenger = travel_duration['Duration']
+                    duration_without_passenger = entity_chosen['DurationWithoutPassenger']
+
+                    item['durationDifference'] = duration_with_passenger - duration_without_passenger
+
+                    items.append(item)
+                
+                return func.HttpResponse(json.dumps(items), mimetype = 'application/json')
         except HttpResponseError as e:
             logging.error(e)
             return func.HttpResponse(json.dumps([]), mimetype = 'application/json')
