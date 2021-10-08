@@ -26,3 +26,8 @@ $ npm ci
 # serve with hot reload at localhost:3000
 $ npm run dev
 ```
+
+## To test functions locally
+
+    . .venv/bin/activate
+    func host start 
