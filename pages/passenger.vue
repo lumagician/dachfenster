@@ -54,7 +54,8 @@ export default {
     },
     methods: {
         searchRoutes: async function () {
-            const response = await fetch('/api/ProposedDrivers?username=sebu');
+            const userName = localStorage.getItem('username') || 'sebug';
+            const response = await fetch(`/api/ProposedDrivers?username=${userName}`);
             const proposedDrivers = await response.json();
 
             this.results = proposedDrivers;
