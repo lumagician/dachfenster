@@ -38,6 +38,7 @@
       <v-toolbar-title v-text="title" />
       <v-btn>fr</v-btn>
       <v-spacer />
+      <span v-if="userName">Hello, {{ userName }}</span>
       <v-btn icon nuxt to="/login">
         <v-icon>mdi-account</v-icon>
       </v-btn>
@@ -59,6 +60,7 @@
 <script>
 export default {
   data () {
+    let userName = '';
     return {
       clipped: false,
       drawer: false,
@@ -83,7 +85,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Dachfenster'
+      title: 'Dachfenster',
+      userName: userName
     }
   }
 };

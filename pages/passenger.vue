@@ -11,6 +11,7 @@
     </p>
     <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
 
+<v-divider></v-divider>
 
     <v-list>
         <v-list-item
@@ -53,16 +54,13 @@ export default {
     },
     methods: {
         searchRoutes: async function () {
-            const resultPromise = new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve([{
-                        title: 'First result.'
-                    }, {
-                        title: 'Second result'
-                    }]);
-                }, 5 * 1000);
-            });
-            this.results = await resultPromise;
+            if (process.client) {
+                const userName = localStorage.getItem('username') || 'sebug';
+                const response = await fetch(`/api/ProposedDrivers?username=${userName}`);
+                const proposedDrivers = await response.json();
+
+                this.results = proposedDrivers;
+            }
         }
     }
 };
