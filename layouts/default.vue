@@ -49,6 +49,7 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
+      <v-btn>fr</v-btn>
       <v-spacer />
       <v-btn
         icon
