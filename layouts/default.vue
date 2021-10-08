@@ -38,6 +38,9 @@
       <v-toolbar-title v-text="title" />
       <v-btn>fr</v-btn>
       <v-spacer />
+      <v-btn icon nuxt to="/login">
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -78,5 +81,5 @@ export default {
       title: 'Dachfenster'
     }
   }
-}
+};
 </script>

@@ -10,7 +10,21 @@
     Nach {{ workAddress.street }}, {{ workAddress.zipCode }} {{ workAddress.city }}
     </p>
     <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
-    <p>{{ results }}</p>
+
+
+    <v-list>
+        <v-list-item
+          v-for="(item, i) in results"
+          :key="i"
+        >
+          <v-list-item-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
         </v-card-text>
       </v-card>
     </v-col>
@@ -24,7 +38,7 @@ export default {
     data() {
         return {
             title: 'Passagier - Mitfahrgelegenheiten',
-            results: 'None',
+            results: [],
             homeAddress: {
                 street: 'Guisanstr. 2',
                 zipCode: '3014',
@@ -41,7 +55,11 @@ export default {
         searchRoutes: async function () {
             const resultPromise = new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    resolve('24 results found.');
+                    resolve([{
+                        title: 'First result.'
+                    }, {
+                        title: 'Second result'
+                    }]);
                 }, 5 * 1000);
             });
             this.results = await resultPromise;
