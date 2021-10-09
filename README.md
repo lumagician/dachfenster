@@ -22,7 +22,7 @@ We have built a progressive web app that enables to optimize the way of drivers 
 We first asked ourselves what are needs of users that use a car sharing app. We discussed features the app should have to 
 be more attractive and designed various alternative mockups before converging on our current design. 
 
-## built using open source software 
+## built using open source software and modern SaaS 
 
 - [NuxtJS](https://nuxtjs.org/) as frontend framework
 - [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
