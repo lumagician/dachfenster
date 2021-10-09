@@ -31,12 +31,6 @@
     >
       <v-btn
         icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
         @click.stop="goHome"
       >
         <v-icon>mdi-home</v-icon>
