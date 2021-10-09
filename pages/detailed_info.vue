@@ -187,6 +187,12 @@ export default {
       this.tags = discriptionSplit.concat(goodiesSplit);
       this.rating = fullJson.passenger.Rating;
 
+      const waitPromise = new Promise((resolve, reject) => {
+        setTimeout(resolve, 5 * 1000);
+      });
+
+      await waitPromise;
+
       GetMap(mapPoints);
       
     }
