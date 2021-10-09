@@ -62,7 +62,7 @@
                 <td>{{ item.dateString }}</td>
                 <td class='centered'>{{ item.estimatedTimeInMinutes }} Minuten</td>
                 <td class='centered'><span v-if="item.requestExists">
-                  <a href='driverPendingDriveDetail'>Vorschläge</a>
+                  <a>Vorschläge</a>
                 </span> </td>
               </tr>
               </tbody>

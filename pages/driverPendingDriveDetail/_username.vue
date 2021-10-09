@@ -20,7 +20,7 @@
               <thead>
               <tr>
                 <th class='text-left'>
-                  nickname
+                  Nickname
                 </th>
                 <th class='text-left'>
                   User rating
