@@ -60,8 +60,8 @@ export default {
         }
         const response = await fetch('/api/GetRoute?name=' + userName);
         const route = await response.json();
-        this.homeAddress = route.startAddress;
-        this.workAddress = route.destinationAddress;
+        this.homeAddress = `${route.startAddress.street}, ${route.startAddress.zipCode} ${route.startAddress.city}`;
+        this.workAddress = `${route.destinationAddress.street}, ${route.destinationAddress.zipCode} ${route.destinationAddress.city}`;
     },
     fetchOnServer: false,
     methods: {
