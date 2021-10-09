@@ -6,10 +6,13 @@
 	{{ title }}
         </v-card-title>
         <v-card-text>
-	<p>Von {{ homeAddress.street }}, {{ homeAddress.zipCode }} {{ homeAddress.city }} <br />
-    Nach {{ workAddress.street }}, {{ workAddress.zipCode }} {{ workAddress.city }}
-    </p>
-    <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
+          <button class='fieldFromTo'>Von</button>
+          <input type='text' name='street' id='fromAdress' v-model='homeAddress' class='inputValueFromTo inputValue'><br>
+          <button class='fieldFromTo'>Nach</button>
+          <input type='text' name='street' id='toAdress' v-model='workAddress' class='inputValueFromTo inputValue'>
+<br >
+
+    <v-btn style='margin-top:2rem;' color="primary" v-on:click="searchRoutes">Suchen</v-btn>
 
 
     <v-list>
@@ -23,7 +26,7 @@
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
             <v-list-item-subtitle>
-              
+
               {{ item.description }}, {{ item.goodies }}
             </v-list-item-subtitle>
           </v-list-item-content>
@@ -40,22 +43,14 @@
 <script>
 export default {
     setup() {
-        
+
     },
     data() {
         return {
             title: 'Passagier - Mitfahrgelegenheiten',
             results: [],
-            homeAddress: {
-                street: 'Guisanstr. 2',
-                zipCode: '3014',
-                city: 'Bern'
-            },
-            workAddress: {
-                street: 'Maritzstrasse 20',
-                zipCode: '3400',
-                city: 'Burgdorf'
-            }
+            homeAddress: 'Guisanstr. 2, 3014 Bern',
+            workAddress: 'Maritzstrasse 20, 3400 Burgdorf'
         };
     },
     async fetch() {
