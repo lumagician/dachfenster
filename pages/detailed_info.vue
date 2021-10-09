@@ -87,5 +87,20 @@ export default {
       },
     ],
   },
+  async fetch() {
+    if (process.client) {
+      const urlSearchParams = new URLSearchParams(location.search);
+
+      const passenger = urlSearchParams.get('passenger');
+      const driver = urlSearchParams.get('driver');
+
+      if (passenger && driver) {
+        const response = await fetch(`/api/GetDriverPassengerMatch?driver={driver}&passenger={passenger}`);
+        const fullJson = await response.json()
+        console.log(fullJson)
+      }
+    }
+  },
+  fetchOnServer: false
 }
 </script>
