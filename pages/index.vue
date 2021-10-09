@@ -9,10 +9,12 @@
           Dachfenster - Fahr mit
         </v-card-title>
         <v-card-text>
-          <p>Was bist du?</p>
+          <p>Hast du es satt, alleine zur Arbeit zu fahren? Finde auf Dachfenster eine
+            Mitfahrgelegenheit. Aber zuallererst, was bist du?
+          </p>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
+
+        <v-card-actions class="justify-center">
           <v-btn
             color='primary'
             nuxt

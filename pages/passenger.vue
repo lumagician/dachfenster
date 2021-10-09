@@ -11,22 +11,25 @@
     </p>
     <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
 
-<v-divider></v-divider>
 
     <v-list>
         <v-list-item
           v-for="(item, i) in results"
           :key="i"
         >
-          <v-list-item-action>
+          <v-list-item-avatar>
             <v-icon>mdi-account</v-icon>
-          </v-list-item-action>
+          </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
-            <v-list-item-subtitle v-text="item.description" />
-            <v-list-item-subtitle v-text="item.goodies" />
-            <v-btn color="primary">Anfragen</v-btn>
+            <v-list-item-subtitle>
+              
+              {{ item.description }}, {{ item.goodies }}
+            </v-list-item-subtitle>
           </v-list-item-content>
+          <v-list-item-action>
+            <v-btn color="primary" v-on:click="selectRow">Anfragen</v-btn>
+          </v-list-item-action>
         </v-list-item>
       </v-list>
         </v-card-text>
@@ -75,6 +78,9 @@ export default {
 
                 this.results = proposedDrivers;
             }
+        },
+        selectRow: function (item) {
+          this.$router.push({ name: 'passengerRequestSent', params: { driver: item.title } })
         }
     }
 };

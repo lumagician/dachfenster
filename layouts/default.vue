@@ -36,8 +36,8 @@
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-btn>fr</v-btn>
       <v-spacer />
+      <v-btn>fr</v-btn>
       <span v-if="userName">Hello, {{ userName }}</span>
       <v-btn icon nuxt to="/login">
         <v-icon>mdi-account</v-icon>
