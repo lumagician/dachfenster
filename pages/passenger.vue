@@ -28,7 +28,7 @@
             </v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-action>
-            <v-btn color="primary">Anfragen</v-btn>
+            <v-btn color="primary" v-on:click="selectRow">Anfragen</v-btn>
           </v-list-item-action>
         </v-list-item>
       </v-list>
@@ -78,6 +78,9 @@ export default {
 
                 this.results = proposedDrivers;
             }
+        },
+        selectRow: function (item) {
+          this.$router.push({ name: 'passengerRequestSent', params: { driver: item.title } })
         }
     }
 };
