@@ -18,7 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     account_name, access_key, endpoint_suffix)
     table_name = "Route"
 
-    name = req.params.get('name')
+    name = req.params.get('username')
 
     with TableClient.from_connection_string(connection_string, table_name) as table_client:
         try:
