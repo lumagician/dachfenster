@@ -114,7 +114,7 @@ export default {
     selectAcceptedRow(nickname) {
       if (process.client) {
       let username = localStorage.getItem('username');
-        location.href =  `/detailed_info?username=${username}/nickname=${nickname}`
+        location.href =  `/detailed_info?driver=${username}&passenger=${nickname}`
       }
     },
     selectPendingRow() {
