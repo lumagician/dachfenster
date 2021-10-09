@@ -41,7 +41,7 @@ We had a very good team spirit.
 
 ## What we learned
 We could immerse ourselves in the problematic of care sharing, which is an increasingly relevant subject especially in the context of raising environmental awareness. 
-Indeed, we found interesting to wrap our heads around how to make car sharing possibilities more attractive. Also, we could learn new technologies and 
+Indeed, we found it interesting to wrap our heads around how to make car sharing possibilities more attractive. Also, we could learn new technologies and 
 to verify their efficiency for solving real use cases. In addition, it was a great opportunity to think about design and applying some techniques of design thinking. 
 ## What's next for Dachfenster
 Take a good rest first, and then we will see :) 
