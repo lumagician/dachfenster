@@ -23,6 +23,9 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
+            <v-list-item-subtitle v-text="item.description" />
+            <v-list-item-subtitle v-text="item.goodies" />
+            <v-btn color="primary">Anfragen</v-btn>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -52,6 +55,17 @@ export default {
             }
         };
     },
+    async fetch() {
+        let userName = 'Kowalski';
+        if (process.client) {
+            userName = localStorage.getItem('username');
+        }
+        const response = await fetch('/api/GetRoute?name=' + userName);
+        const route = await response.json();
+        this.homeAddress = route.startAddress;
+        this.workAddress = route.destinationAddress;
+    },
+    fetchOnServer: false,
     methods: {
         searchRoutes: async function () {
             if (process.client) {

@@ -72,12 +72,12 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-thumb-up',
           title: 'Passagier',
           to: '/passenger'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-share',
           title: 'Fahrt sharen',
           to: '/driveShare'
         }

@@ -5,3 +5,4 @@
 azure-functions
 azure-data-tables
 requests
+furl

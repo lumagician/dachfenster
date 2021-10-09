@@ -8,7 +8,7 @@ from azure.core.exceptions import HttpResponseError
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+    logging.info('Getting proposed passengers.')
 
     access_key = os.getenv("TABLES_PRIMARY_STORAGE_ACCOUNT_KEY")
     endpoint_suffix = os.getenv("TABLES_STORAGE_ENDPOINT_SUFFIX")
@@ -22,7 +22,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     with TableClient.from_connection_string(connection_string, table_name) as table_client:
         try:
-            parameters = {u"hascar": True }
+            parameters = {u"hascar": False }
             driver_filter = u"HasCar eq @hascar"
             queried_entities = table_client.query_entities(
                 query_filter=driver_filter, select=[
@@ -33,10 +33,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     "DestinationAddressCity",
                     "Description",
                     "Goodies",
-                    "DurationWithoutPassenger",
                     "Rating"],
                 parameters = parameters
             )
+
+            driver = table_client.get_entity('testing', name)
 
             items = []
             with TableClient.from_connection_string(connection_string, 'TravelDuration') as travel_duration_client:
@@ -51,10 +52,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                         'goodies': entity_chosen['Goodies'],
                         'rating': entity_chosen['Rating']
                     }
-                    travel_duration = travel_duration_client.get_entity('testing', entity_chosen['RowKey'] + '_' + name)
+                    travel_duration = travel_duration_client.get_entity('testing', name + '_' + entity_chosen['RowKey'])
                     
                     duration_with_passenger = travel_duration['Duration']
-                    duration_without_passenger = entity_chosen['DurationWithoutPassenger']
+                    duration_without_passenger = driver['DurationWithoutPassenger']
 
                     item['durationDifference'] = duration_with_passenger - duration_without_passenger
 

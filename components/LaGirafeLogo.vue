@@ -1,9 +1,10 @@
 <template>
   <img
-    class="VuetifyLogo"
+    class="LaGirafeLogo"
     alt="La Girafe qui regarde"
-    src="/logo.jpg"
+    src="/logov2.png"
+    width="180"
+    height="180"
   >
 </template>
-
 
