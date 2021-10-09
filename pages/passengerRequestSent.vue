@@ -1,6 +1,9 @@
 <template>
   <v-row>
     <v-col class="text-center">
+        <v-icon x-large>
+            mdi-done
+        </v-icon>
       <blockquote class="blockquote">
         You have successfully requested a ride share with {{ driver }}. We'll let you
         know once they have made their decision.
