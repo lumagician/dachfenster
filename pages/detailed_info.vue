@@ -197,6 +197,6 @@ export default {
       this.tags = discriptionSplit.concat(goodiesSplit);
     }
   },
-  fetchOnServer: false,
+  fetchOnServer: false
 }
 </script>

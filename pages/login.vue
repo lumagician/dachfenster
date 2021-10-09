@@ -23,6 +23,7 @@ export default {
     validateLoginCreds: async function () {
       if (process.client) {
         localStorage.setItem('username', this.username)
+        location.href = '/';
       }
     },
   },
