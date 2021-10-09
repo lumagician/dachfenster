@@ -9,6 +9,21 @@ Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.ne
 - [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
 
 
+# Devpost Stuff
+## Inspiration
+
+## What it does
+
+## How we built it
+
+## Challenges we ran into
+
+## Accomplishments that we're proud of
+
+## What we learned
+
+## What's next for Dachfenster
+
 
 ## Run it yourself
 
