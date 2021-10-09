@@ -33,7 +33,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     "DestinationAddressCity",
                     "Description",
                     "Goodies",
-                    "DurationWithoutPassenger"],
+                    "DurationWithoutPassenger",
+                    "Rating"],
                 parameters = parameters
             )
 
@@ -47,7 +48,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                         'destinationAddressZipCode': entity_chosen['DestinationAddressZipCode'],
                         'destinationAddressCity': entity_chosen['DestinationAddressCity'],
                         'description': entity_chosen['Description'],
-                        'goodies': entity_chosen['Goodies']
+                        'goodies': entity_chosen['Goodies'],
+                        'rating': entity_chosen['Rating']
                     }
                     travel_duration = travel_duration_client.get_entity('testing', entity_chosen['RowKey'] + '_' + name)
                     
