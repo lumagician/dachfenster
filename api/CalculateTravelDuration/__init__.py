@@ -22,7 +22,10 @@ def get_duration_with_passenger(driver_start, passenger_start, passenger_end, dr
     f.args["wp.3"] = driver_end
     r = requests.get(f.url)
     j = r.json()
-    return j["resourceSets"][0]["resources"][0]["travelDuration"]
+    logging.info(json.dumps(j['resourceSets'][0]["resources"][0]))
+    result = {}
+    result['travelDuration'] = j["resourceSets"][0]["resources"][0]["travelDuration"]
+    return result
 
 def get_duration_without_passenger(driver_start, driver_end):
     f = furl(BASE_URL)
@@ -33,7 +36,10 @@ def get_duration_without_passenger(driver_start, driver_end):
     f.args["wp.1"] = driver_end
     r = requests.get(f.url)
     j = r.json()
-    return j["resourceSets"][0]["resources"][0]["travelDuration"]
+    logging.info(json.dumps(j['resourceSets'][0]["resources"][0]))
+    result = {}
+    result['travelDuration'] = j["resourceSets"][0]["resources"][0]["travelDuration"]
+    return result
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -74,18 +80,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 passenger_start_address, passenger_destination_address, driver_destination_address)
 
 
-            driver['DurationWithoutPassenger'] = duration_without_passenger
+            driver['DurationWithoutPassenger'] = duration_without_passenger['travelDuration']
 
             table_client.upsert_entity(mode=UpdateMode.REPLACE, entity = driver)
 
-            logging.info(str(duration_without_passenger) + ' vs ' + str(duration_with_passenger))
+            logging.info(str(duration_without_passenger['travelDuration']) + ' vs ' + str(duration_with_passenger['travelDuration']))
 
             result = {
                 'PartitionKey': 'testing',
                 'RowKey': driver_name + '_' + passenger_name,
                 'Driver': driver_name,
                 'Passenger': passenger_name,
-                'Duration': duration_with_passenger
+                'Duration': duration_with_passenger['travelDuration']
             }
 
             with TableClient.from_connection_string(connection_string, 'TravelDuration') as duration_client:
