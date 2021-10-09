@@ -3,11 +3,28 @@ Dieses Programm hilft dir, die perfekten Mitfahrgelegenheiten zu finden!
 
 Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.net
 
+
+
+
+# Devpost Stuff
+## Inspiration
+
+## What it does
+
+## How we built it
+
 ## built using open source software 
 
 - [NuxtJS](https://nuxtjs.org/) as frontend framework
 - [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
 
+## Challenges we ran into
+
+## Accomplishments that we're proud of
+
+## What we learned
+
+## What's next for Dachfenster
 
 
 ## Run it yourself

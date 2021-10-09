@@ -28,16 +28,19 @@
                 <th class='text-center'>
                   Berechnete Fahrzeit
                 </th>
+                <th class='text-center'>
+
+                </th>
               </tr>
               </thead>
               <tbody>
               <tr
                 v-for='item in drives'
                 :key='item.nickname'
-                @click='selectRow(item)'
+
               >
-                <td>{{ item.nickname }}</td>
-                <td>
+                <td @click='accept(item)'>{{ item.nickname }}</td>
+                <td @click='accept(item)'>
                   <v-rating
                     v-bind:style="{ 'max-width': '10px' }"
                     size='5'
@@ -45,7 +48,8 @@
                     small readonly
                   ></v-rating>
                 </td>
-                <td class='centered'>{{ item.estimatedTimeInMinutes }} Minuten</td>
+                <td class='centered' @click='accept(item)'>{{ item.estimatedTimeInMinutes }} Minuten</td>
+                <td class='centered' @click='showDetails(item)'><a>Beschreibung</a></td>
               </tr>
               </tbody>
             </template>
@@ -97,9 +101,20 @@ export default {
     }
   },
   methods: {
-    selectRow: function(item) {
+    showDetails: function(item) {
       if (process.client) {
         location.href = '/drivePassengerDetail?nickname='+item.nickname
+
+      }
+    },
+    accept: function(item) {
+      if (process.client) {
+        var r = window.confirm("Accept this proposition?")
+        if (r == true) {
+          location.href = '/driver?username='+item.nickname
+        } else {
+          //NOP
+        }
 
       }
     }
