@@ -1,5 +1,5 @@
-# dachfenster
-Dieses Programm hilft dir, Mitfahrgelegenheiten zu finden! 🚗
+# dachfenster🚗🦒
+Dieses Programm hilft dir, die perfekten Mitfahrgelegenheiten zu finden! 
 
 Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.net
 
