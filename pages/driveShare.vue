@@ -111,7 +111,9 @@ export default {
         } catch (e) {
           console.log(e);
         }
-        location.href = '/driver'
+        setTimeout(function () {
+          location.href = '/driver'
+        });
       }
     }
   }
