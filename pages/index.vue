@@ -23,7 +23,7 @@
           <v-btn
             color='primary'
             nuxt
-            to='/inspire'
+            to='/driver'
           >
             Ich bin Fahrer
           </v-btn>

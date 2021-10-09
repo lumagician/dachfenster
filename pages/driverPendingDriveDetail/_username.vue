@@ -20,7 +20,7 @@
               <thead>
               <tr>
                 <th class='text-left'>
-                  Username
+                  nickname
                 </th>
                 <th class='text-left'>
                   User rating
@@ -33,10 +33,10 @@
               <tbody>
               <tr
                 v-for='item in drives'
-                :key='item.username'
-                @click="selectRow(item)"
+                :key='item.nickname'
+                @click='selectRow(item)'
               >
-                <td>{{ item.username }}</td>
+                <td>{{ item.nickname }}</td>
                 <td>
                   <v-rating
                     v-bind:style="{ 'max-width': '10px' }"
@@ -71,22 +71,22 @@ export default {
       },
       drives: [
         {
-          username: 'Milou',
+          nickname: 'Milou',
           rating: 3.5,
           estimatedTimeInMinutes: 35
         },
         {
-          username: 'Max32',
+          nickname: 'Max32',
           rating: 2.4,
           estimatedTimeInMinutes: 45
         },
         {
-          username: 'Test',
+          nickname: 'Test',
           rating: 3.5,
           estimatedTimeInMinutes: 30
         },
         {
-          username: 'Cardriver2',
+          nickname: 'Cardriver2',
           rating: 4.5,
           estimatedTimeInMinutes: 40
         }
@@ -97,8 +97,11 @@ export default {
     }
   },
   methods: {
-    selectRow: function (item) {
-      this.$router.push({ name: 'drivePassengerDetail', params: { username: item.username } })
+    selectRow: function(item) {
+      if (process.client) {
+        location.href = '/drivePassengerDetail?nickname='+item.nickname
+
+      }
     }
   }
 
