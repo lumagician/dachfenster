@@ -95,8 +95,21 @@ export default {
     }
   },
   methods: {
-    toDriverHome: function() {
+    toDriverHome: async function() {
       if (process.client) {
+        const toPost = {
+          userName: localStorage.getItem('username'),
+          selectedWeekdays: this.weekDays.filter(wd => wd.selected).map(wd => wd.id).join(',')
+        };
+        try {
+          const response = await fetch('/api/SaveSharedRoute', {
+            method: 'POST',
+            body: JSON.stringify(toPost)
+          });
+          const responseJson = await response.json();
+        } catch (e) {
+          console.log(e);
+        }
         location.href = '/driver'
       }
     }
