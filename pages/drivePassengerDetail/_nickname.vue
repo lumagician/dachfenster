@@ -7,8 +7,8 @@
         </v-card-title>
         <v-card-text>
           <p>
-
-        </p>
+            {{userDriveDescription}}
+          </p>
         </v-card-text>
       </v-card>
     </v-col>
@@ -18,13 +18,20 @@
 
 
 export default {
+ async fetch() {
+   if (process.client) {
+     const urlSearchParams = new URLSearchParams(location.search)
 
+     const nickname = urlSearchParams.get('nickname')
+     this.title = 'Details given by passenger ' + nickname + ' for selected drive'
+   }
+ },
+  fetchOnServer: false,
   data() {
-return {
+    return {
       title: 'Details given by passenger for selected drive',
-      username: this.$route.params.username,
       userDriveDescription: 'Ich nehme mein Velo mit'
-  }
+    }
   }
 
 }

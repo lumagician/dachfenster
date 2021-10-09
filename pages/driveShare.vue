@@ -33,7 +33,7 @@
             <button class='fieldFromTo'>Nach</button>
             <input type='text' name='street' id='toAdress' v-model='toAddress' class='inputValueFromTo inputValue'>
           </p>
-          <v-btn color='primary' v-on:click='searchRoutes'>Sharen</v-btn>
+          <v-btn color='primary' v-on:click='toDriverHome'>Sharen</v-btn>
         </v-card-text>
       </v-card>
     </v-col>
@@ -92,6 +92,13 @@ export default {
       fromAddress: 'Guisanstr. 2, 3014 Bern',
       toAddress: 'Maritzstrasse 20, 3400 Burgdorf'
 
+    }
+  },
+  methods: {
+    toDriverHome: function() {
+      if (process.client) {
+        location.href = '/driver'
+      }
     }
   }
 }
