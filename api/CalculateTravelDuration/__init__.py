@@ -10,6 +10,21 @@ import requests
 from azure.data.tables import UpdateMode
 
 BASE_URL = "http://dev.virtualearth.net/REST/V1/Routes/Driving"
+LOCATIONS_BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations'
+
+def get_location(street, zipCode):
+    f = furl(LOCATIONS_BASE_URL)
+    f.args["o"] = "json"
+    f.args["key"] = os.getenv("BING_MAPS_KEY")
+    f.args["countryRegion"] = "CH"
+    f.args["postalCode"] = zipCode
+    f.args["addressLine"] = street
+    logging.info(f.url)
+    r = requests.get(f.url)
+    j = r.json()
+    first_resource = j['resourceSets'][0]['resources'][0]
+    coordinates = first_resource['point']['coordinates']
+    return str(coordinates[0]) + ',' + str(coordinates[1])
 
 def get_duration_with_passenger(driver_start, passenger_start, passenger_end, driver_end):
     f = furl(BASE_URL)
@@ -91,7 +106,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 'RowKey': driver_name + '_' + passenger_name,
                 'Driver': driver_name,
                 'Passenger': passenger_name,
-                'Duration': duration_with_passenger['travelDuration']
+                'Duration': duration_with_passenger['travelDuration'],
+                'DriverStartCoordinates': get_location(driver['StartAddressStreet'], driver['StartAddressZipCode']),
+                'PassengerStartCoordinates':  get_location(passenger['StartAddressStreet'], passenger['StartAddressZipCode']),
+                'PassengerDestinationCoordinates': get_location(passenger['DestinationAddressStreet'], passenger['DestinationAddressZipCode']),
+                'DriverDestinationCoordinates': get_location(driver['DestinationAddressStreet'], driver['DestinationAddressZipCode'])
             }
 
             with TableClient.from_connection_string(connection_string, 'TravelDuration') as duration_client:
