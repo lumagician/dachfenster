@@ -2,6 +2,23 @@
   color: white
 }
 
+.v-rating button.v-icon {
+  padding: 0rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.detailPart {
+  margin-bottom:0.1rem
+}
+
+.highlightFromTo {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+}
+
 .fieldFromTo {
   color: rgba(255, 255, 255, 0.7);
   text-align: left !important;

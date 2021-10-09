@@ -1,29 +1,29 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
+  <v-row justify='center' align='center'>
+    <v-col cols='12' sm='8' md='6'>
+      <v-card class='logo py-4 d-flex justify-center'>
         <LaGirafeLogo />
       </v-card>
       <v-card>
-        <v-card-title class="headline">
-	Dachfenster - Fahr mit
+        <v-card-title class='headline'>
+          Dachfenster - Fahr mit
         </v-card-title>
         <v-card-text>
-	<p>Was bist du?</p>
+          <p>Was bist du?</p>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
           <v-btn
-            color="primary"
+            color='primary'
             nuxt
-            to="/passenger"
+            to='/passenger'
           >
             Ich bin Passagier
           </v-btn>
-	  <v-btn
-            color="primary"
+          <v-btn
+            color='primary'
             nuxt
-            to="/inspire"
+            to='/inspire'
           >
             Ich bin Fahrer
           </v-btn>
