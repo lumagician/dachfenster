@@ -22,9 +22,9 @@ def get_duration_with_passenger(driver_start, passenger_start, passenger_end, dr
     f.args["wp.3"] = driver_end
     r = requests.get(f.url)
     j = r.json()
-    logging.info(json.dumps(j['resourceSets'][0]["resources"][0]))
+    first_resource = j['resourceSets'][0]["resources"][0]
     result = {}
-    result['travelDuration'] = j["resourceSets"][0]["resources"][0]["travelDuration"]
+    result['travelDuration'] = first_resource["travelDuration"]
     return result
 
 def get_duration_without_passenger(driver_start, driver_end):
@@ -36,9 +36,9 @@ def get_duration_without_passenger(driver_start, driver_end):
     f.args["wp.1"] = driver_end
     r = requests.get(f.url)
     j = r.json()
-    logging.info(json.dumps(j['resourceSets'][0]["resources"][0]))
+    first_resource = j['resourceSets'][0]["resources"][0]
     result = {}
-    result['travelDuration'] = j["resourceSets"][0]["resources"][0]["travelDuration"]
+    result['travelDuration'] = first_resource["travelDuration"]
     return result
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
