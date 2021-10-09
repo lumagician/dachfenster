@@ -110,6 +110,16 @@ export default {
     }
 
   },
+  fetchOnServer: false,
+  async fetch() {
+      let userName = 'Kowalski';
+      if (process.client) {
+          userName = localStorage.getItem('username');
+      }
+      const response = await fetch('/api/DriverPendingRoutes?username=' + userName);
+      const route = await response.json();
+      console.log(route);
+  },
   methods: {
     selectAcceptedRow(nickname) {
       if (process.client) {
