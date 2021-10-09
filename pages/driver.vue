@@ -87,12 +87,12 @@ export default {
         {
           dateString: 'Montag, Dienstag wöchentlich um 8:00',
           estimatedTimeInMinutes: 20,
-          passengerNickname: 'Milou'
+          passengerNickname: 'alex'
         },
         {
           dateString: 'Mittwoch wöchentlich um 16:00',
           estimatedTimeInMinutes: 30,
-          passengerNickname: 'Test'
+          passengerNickname: 'marty'
         }
       ],
       pendingDrives: [
