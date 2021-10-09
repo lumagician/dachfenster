@@ -14,7 +14,9 @@ Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.ne
 
 ## How we built it
 
-We first asked ourselves what are needs of users that would use this app for 
+We first asked ourselves what are needs of users that use a car sharing app. We discussed features the app should have to 
+be more attractive and designed various alternative mockups before converging on our current design. 
+
 ## built using open source software 
 
 - [NuxtJS](https://nuxtjs.org/) as frontend framework
