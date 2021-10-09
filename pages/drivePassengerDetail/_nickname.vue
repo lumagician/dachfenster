@@ -23,13 +23,13 @@ export default {
      const urlSearchParams = new URLSearchParams(location.search)
 
      const nickname = urlSearchParams.get('nickname')
-     this.title = 'Details given by passenger ' + nickname + ' for selected drive'
+     this.title = 'Details given by ' + nickname + ' for selected drive'
    }
  },
   fetchOnServer: false,
   data() {
     return {
-      title: 'Details given by passenger for selected drive',
+      title: 'Details given by for selected drive',
       userDriveDescription: 'Ich nehme mein Velo mit'
     }
   }
