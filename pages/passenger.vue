@@ -11,7 +11,6 @@
     </p>
     <v-btn color="primary" v-on:click="searchRoutes">Suchen</v-btn>
 
-<v-divider></v-divider>
 
     <v-list>
         <v-list-item
