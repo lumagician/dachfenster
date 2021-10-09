@@ -23,7 +23,7 @@
           </div>
         </v-card>
         <v-card class="pa-2 pb-6" elavation="10">
-          <div id="myMap" style="height: 50vh; margin-bottom: 30px"></div>
+          <div id="myMap" style="height: 60vh; margin-bottom: 30px"></div>
           <div id="printoutPanel" style="display: none"></div>
           <v-row
             class="px-10 text-center"
@@ -184,7 +184,7 @@ export default {
           { label: 'Fahrer Start', lat: PointA[0], long: PointA[1] },
           { label: 'Passagier Start', lat: PointB[0], long: PointB[1] },
           { label: 'Passagier Ende', lat: PointC[0], long: PointC[1] },
-          { label: 'Fahrer End', lat: PointD[0], long: PointD[1] },
+          { label: 'Fahrer Ende', lat: PointD[0], long: PointD[1] },
         ];
       }
 
