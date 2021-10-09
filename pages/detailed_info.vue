@@ -4,7 +4,7 @@
       <v-col class="text-left">
         <v-card class="mb-6 pa-2 pb-6" elavation="10">
           <div id="myMap" style="height: 50vh; margin-bottom: 30px"></div>
-          <div id="printoutPanel" style="display:none"></div>
+          <div id="printoutPanel" style="display: none"></div>
           <v-row
             class="px-10 text-center"
             style="display: flex; justify-content: space-between"
@@ -57,12 +57,12 @@
 
 
 <script>
-if (process.client) {
-  window.GetMap = function GetMap() {
+
+function GetMap(mapPoints) {
     var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       /* No need to set credentials if already passed in URL */
       center: new Microsoft.Maps.Location(51.477778, -0.001389),
-      zoom: 16,
+      zoom: 15,
     })
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
       var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(
@@ -73,26 +73,13 @@ if (process.client) {
         routeMode: Microsoft.Maps.Directions.RouteMode.driving,
         maxRoutes: 1,
       })
-      var waypoint1 = new Microsoft.Maps.Directions.Waypoint({
-        address: 'Driver Start',
-        location: new Microsoft.Maps.Location(46.879114, 7.620547),
-      })
-      var waypoint2 = new Microsoft.Maps.Directions.Waypoint({
-        address: 'Passenger Start',
-        location: new Microsoft.Maps.Location(46.926458, 7.564239),
-      })
-      var waypoint3 = new Microsoft.Maps.Directions.Waypoint({
-        address: 'Passenger End',
-        location: new Microsoft.Maps.Location(46.947371, 7.438867),
-      })
-      var waypoint4 = new Microsoft.Maps.Directions.Waypoint({
-        address: 'Driver End',
-        location: new Microsoft.Maps.Location(46.925377, 7.416773),
-      })
-      directionsManager.addWaypoint(waypoint1)
-      directionsManager.addWaypoint(waypoint2)
-      directionsManager.addWaypoint(waypoint3)
-      directionsManager.addWaypoint(waypoint4)
+      for(let mapPoint of mapPoints) {
+        let waypoint = new Microsoft.Maps.Directions.Waypoint({
+        address: mapPoint.label,
+        location: new Microsoft.Maps.Location(mapPoint.lat, mapPoint.long),
+      });
+      directionsManager.addWaypoint(waypoint)
+      }
       // Set the element in which the itinerary will be rendered
       directionsManager.setRenderOptions({
         itineraryContainer: document.getElementById('printoutPanel'),
@@ -100,35 +87,29 @@ if (process.client) {
       directionsManager.calculateDirections()
     })
   }
-}
 
 export default {
-  head: {
-    script: [
-      {
-        hid: 'bingmaps',
-        src:
-          '//www.bing.com/api/maps/mapcontrol?callback=GetMap&key=' +
-          process.env.BING_MAPS_KEY,
-        defer: true,
-      },
-    ],
-  },
+
   data: () => ({
     username: 'La Giraffe',
     rating: 4.5,
-    waypoints: [
-      [46.879114, 7.620547],
-      [46.926458, 7.564239],
-      [46.947371, 7.438867],
-      [46.925377, 7.416773],
-    ],
     discription: 'Bin eine Giraffe => brauche ein Dachfenster',
     tags: ['Small Talk', 'Nerd', 'Giraffe', 'Politik'],
     rideDuration: '1h 24min',
     startTime: '08:20',
     arrival: '09:44',
   }),
+  
+  head: {
+    script: [
+      {
+        hid: 'bingmaps',
+        src:
+          '//www.bing.com/api/maps/mapcontrol?key=' +
+          process.env.BING_MAPS_KEY,
+      },
+    ],
+  },
 
   async fetch() {
     if (process.client) {
@@ -143,6 +124,7 @@ export default {
         const response = await fetch(
           `/api/GetDriverPassengerMatch?driver=${driver}&passenger=${passenger}`
         )
+        console.log(response)
         fullJson = await response.json()
         console.log(fullJson)
       } else {
@@ -189,12 +171,24 @@ export default {
           },
         };
       }
-
       const discriptionSplit = fullJson.passenger.Description.split(', ');
       const goodiesSplit = fullJson.passenger.Goodies.split(', ');
 
+      const PointA = fullJson.duration.DriverStartCoordinates.split(',')
+      const PointB = fullJson.duration.PassengerStartCoordinates.split(',')
+      const PointC = fullJson.duration.PassengerDestinationCoordinates.split(',')
+      const PointD = fullJson.duration.DriverDestinationCoordinates.split(',')
+      const mapPoints = [{label: 'Driver Start', lat: PointA[0], long: PointA[1]},
+      {label: 'Passenger Start', lat: PointB[0], long: PointB[1]},
+      {label: 'Passenger End', lat: PointC[0], long: PointC[1]},
+      {label: 'Driver End', lat: PointD[0], long: PointD[1]}]
+
       this.username = fullJson.passenger.RowKey;
       this.tags = discriptionSplit.concat(goodiesSplit);
+      this.rating = fullJson.passenger.Rating;
+
+      GetMap(mapPoints);
+      
     }
   },
   fetchOnServer: false
