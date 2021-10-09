@@ -32,8 +32,9 @@ be more attractive and designed various alternative mockups before converging on
 
 ## Challenges we ran into
 
-What would a user find useful, which additional information, which compromises to keep the ui simple to use on an everyday basis. 
-How to help potential users overcome the hurdle of not knowing what kind of  
+What would a user find useful, which additional information, which compromises to keep the ui simple to use on an everyday basis? 
+How to help potential users to overcome the hurdle of not knowing what kind of expectation the driver or passenger may have?
+
 ## Accomplishments that we're proud of
 We hacked non-stop and were able to produce a working, scalable app that distinguishes itself with features that we believe makes car sharing easier and more attractive.
 We had a very good team spirit. 
