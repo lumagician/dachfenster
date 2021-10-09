@@ -8,8 +8,13 @@ Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.ne
 
 # Devpost Stuff
 ## Inspiration
+As extensive research has showed, car sharing has a big potential for reducing our environmental impact as well as to offer convenient ways to travel.
+Here we aimed not only at producing a pragmatic design, we wanted to provide features which actually make car sharing an agreeable experience that 
+adds a mere value for users. For example, users can be interested in not having to drive alone but instead in sharing their trip with 
+someone matching their personality or having same needs of punctuality depending on the journey.
 
 ## What it does
+We have built a progressive web app that enables to optimize the way of drivers and passengers to trade their respective needs for car sharing and enables to find the best match based on other soft factors.
 
 
 ## How we built it
@@ -30,7 +35,7 @@ be more attractive and designed various alternative mockups before converging on
 What would a user find useful, which additional information, which compromises to keep the ui simple to use on an everyday basis. 
 How to help potential users overcome the hurdle of not knowing what kind of  
 ## Accomplishments that we're proud of
-We hacked non-stop and were able to produce a working, scalable app that distinguishes itself with feature that we believe makes car sharing easier and more attractive.
+We hacked non-stop and were able to produce a working, scalable app that distinguishes itself with features that we believe makes car sharing easier and more attractive.
 We had a very good team spirit. 
 
 ## What we learned
