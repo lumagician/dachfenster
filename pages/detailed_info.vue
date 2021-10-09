@@ -2,8 +2,8 @@
   <v-container fluid grid-list-md>
     <v-row class="d-flex">
       <v-col class="text-left">
-        <v-card class="mb-6 pa-2 pb-6" elavation="10">
-          <v-row class="pl-5" style="margin: auto">
+        <v-card class="mb-6 pa-4" elavation="10">
+          <v-row class="pl-5">
             <v-card-title>{{ username }}</v-card-title>
             <v-rating
               half-increments
@@ -14,7 +14,7 @@
               class="mt-4"
             ></v-rating>
           </v-row>
-          <div class="pa-4" style="margin: auto">
+          <div class="pa-4">
             <v-chip-group active-class="primary--text" column>
               <v-chip v-for="tag in tags" :key="tag">
                 {{ tag }}
@@ -22,12 +22,11 @@
             </v-chip-group>
           </div>
         </v-card>
-        <v-card class="mb-6 pa-2 pb-6" elavation="10">
+        <v-card class="pa-2 pb-6" elavation="10">
           <div id="myMap" style="height: 50vh; margin-bottom: 30px"></div>
           <div id="printoutPanel" style="display: none"></div>
           <v-row
             class="px-10 text-center"
-            style="display: flex; justify-content: space-between"
           >
             <v-card class="pa-2" color="blue" style="margin:auto">
               <v-card-text>Reisezeit</v-card-text>
@@ -72,13 +71,10 @@ function GetMap(mapPoints) {
 
 export default {
   data: () => ({
-    username: 'La Giraffe',
-    rating: 4.5,
-    discription: 'Bin eine Giraffe => brauche ein Dachfenster',
-    tags: ['Small Talk', 'Nerd', 'Giraffe', 'Politik'],
+    username: 'no user showed',
+    rating: 0,
+    tags: ['not a tag', 'not a tag'],
     rideDuration: '-',
-    startTime: '08:20',
-    arrival: '09:44',
   }),
 
   head: {
@@ -175,8 +171,8 @@ export default {
         discriptionSplit = fullJson.driver.Description.split(', ');
         goodiesSplit = fullJson.driver.Goodies.split(', ');
         mapPoints = [
-          { label: 'Passenger Start', lat: PointB[0], long: PointB[1] },
-          { label: 'Passenger End', lat: PointC[0], long: PointC[1] },
+          { label: 'Passagier Start', lat: PointB[0], long: PointB[1] },
+          { label: 'Passagier Ende', lat: PointC[0], long: PointC[1] },
         ];
       } else if (driver == localStorage.getItem('username')) {
         this.username = fullJson.passenger.RowKey;
@@ -185,10 +181,10 @@ export default {
         discriptionSplit = fullJson.passenger.Description.split(', ');
         goodiesSplit = fullJson.passenger.Goodies.split(', ');
         mapPoints = [
-          { label: 'Driver Start', lat: PointA[0], long: PointA[1] },
-          { label: 'Passenger Start', lat: PointB[0], long: PointB[1] },
-          { label: 'Passenger End', lat: PointC[0], long: PointC[1] },
-          { label: 'Driver End', lat: PointD[0], long: PointD[1] },
+          { label: 'Fahrer Start', lat: PointA[0], long: PointA[1] },
+          { label: 'Passagier Start', lat: PointB[0], long: PointB[1] },
+          { label: 'Passagier Ende', lat: PointC[0], long: PointC[1] },
+          { label: 'Fahrer End', lat: PointD[0], long: PointD[1] },
         ];
       }
 
