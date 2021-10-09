@@ -95,7 +95,7 @@ export default {
       const driver = urlSearchParams.get('driver');
 
       if (passenger && driver) {
-        const response = await fetch(`/api/GetDriverPassengerMatch?driver={driver}&passenger={passenger}`);
+        const response = await fetch(`/api/GetDriverPassengerMatch?driver=${driver}&passenger=${passenger}`);
         const fullJson = await response.json()
         console.log(fullJson)
       }
