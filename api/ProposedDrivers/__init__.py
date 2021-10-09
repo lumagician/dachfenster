@@ -58,6 +58,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
                     items.append(item)
                 
+                items = sorted(items, key=lambda item: item['durationDifference'])
                 return func.HttpResponse(json.dumps(items), mimetype = 'application/json')
         except HttpResponseError as e:
             logging.error(e)
