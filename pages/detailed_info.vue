@@ -4,7 +4,7 @@
       <v-col class="text-left">
         <v-card class="mb-6 pa-2 pb-6" elavation="10">
           <div id="myMap" style="height: 50vh; margin-bottom: 30px"></div>
-          <div id="printoutPanel"></div>
+          <div id="printoutPanel" style="display:none"></div>
           <v-row
             class="px-10 text-center"
             style="display: flex; justify-content: space-between"
