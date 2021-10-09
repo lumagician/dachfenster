@@ -3,10 +3,7 @@ Dieses Programm hilft dir, die perfekten Mitfahrgelegenheiten zu finden!
 
 Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.net
 
-## built using open source software 
 
-- [NuxtJS](https://nuxtjs.org/) as frontend framework
-- [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
 
 
 # Devpost Stuff
@@ -15,6 +12,11 @@ Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.ne
 ## What it does
 
 ## How we built it
+
+## built using open source software 
+
+- [NuxtJS](https://nuxtjs.org/) as frontend framework
+- [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
 
 ## Challenges we ran into
 
