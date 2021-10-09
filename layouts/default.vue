@@ -31,9 +31,9 @@
     >
       <v-btn
         icon
-        @click.stop="miniVariant = !miniVariant"
+        @click.stop="goHome"
       >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        <v-icon>mdi-home</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
@@ -87,6 +87,10 @@ export default {
       rightDrawer: false,
       title: 'Dachfenster',
       userName: userName
+    }
+  }, methods: {
+    goHome: function () {
+      location.href = '/';
     }
   }
 };
