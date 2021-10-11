@@ -5,12 +5,11 @@ Du kannst die App hier testen: https://icy-mushroom-08156d003.azurestaticapps.ne
 
 
 
-
 # Devpost Stuff
 ## Inspiration
 As extensive research has showed, car sharing has a big potential for reducing our environmental impact as well as to offer convenient ways to travel.
 Here we aimed not only at producing a pragmatic design, we wanted to provide features which actually make car sharing an agreeable experience that 
-adds a mere value for users. For example, users can be interested in not having to drive alone but instead in sharing their trip with 
+adds value for users. For example, users can be interested in not having to drive alone but instead in sharing their trip with 
 someone matching their personality or having same needs of punctuality depending on the journey.
 
 ## What it does
@@ -22,7 +21,7 @@ We have built a progressive web app that enables to optimize the way of drivers 
 We first asked ourselves what are needs of users that use a car sharing app. We discussed features the app should have to 
 be more attractive and designed various alternative mockups before converging on our current design. 
 
-## built using open source software and modern SaaS 
+## Built using open source software and modern SaaS 
 
 - [NuxtJS](https://nuxtjs.org/) as frontend framework
 - [Vuetify](https://vuetifyjs.com/) as part of NuxtJS
@@ -40,7 +39,7 @@ We hacked non-stop and were able to produce a working, scalable app that disting
 We had a very good team spirit. 
 
 ## What we learned
-We could immerse ourselves in the problematic of care sharing, which is an increasingly relevant subject especially in the context of raising environmental awareness. 
+We could immerse ourselves in the problematic of car sharing, which is an increasingly relevant subject especially in the context of raising environmental awareness. 
 Indeed, we found it interesting to wrap our heads around how to make car sharing possibilities more attractive. Also, we could learn new technologies and 
 to verify their efficiency for solving real use cases. In addition, it was a great opportunity to think about design and applying some techniques of design thinking. 
 ## What's next for Dachfenster
